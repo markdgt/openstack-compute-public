@@ -1,0 +1,36 @@
+[DEFAULT]
+auth_strategy=keystone
+core_plugin=ml2
+service_plugins=router,qos,trunk
+allow_overlapping_ips=True
+host={{ grains['fqdn'] }}
+global_physnet_mtu=1496
+dhcp_agents_per_network=3
+log_dir=/var/log/neutron
+rpc_backend=rabbit
+control_exchange=neutron
+[agent]
+root_helper=sudo neutron-rootwrap /etc/neutron/rootwrap.conf
+[cors]
+[cors.subdomain]
+[database]
+[keystone_authtoken]
+[matchmaker_redis]
+[nova]
+[oslo_concurrency]
+lock_path=$state_path/lock
+[oslo_messaging_amqp]
+[oslo_messaging_notifications]
+[oslo_messaging_rabbit]
+rabbit_hosts=172.23.16.210:5672,172.23.16.211:5672,172.23.16.212:5672
+rabbit_use_ssl=False
+rabbit_userid=guest
+rabbit_password={{ pillar['RabbitPassword'] }}
+rabbit_ha_queues=True
+heartbeat_timeout_threshold=60
+[oslo_messaging_zmq]
+[oslo_middleware]
+[oslo_policy]
+[qos]
+[quotas]
+[ssl]

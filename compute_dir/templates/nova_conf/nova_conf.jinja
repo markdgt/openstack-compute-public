@@ -1,0 +1,90 @@
+[neutron]
+project_name=service
+extension_sync_interval=600
+password={{ pillar['NeutronPassword'] }}
+auth_url=http://172.31.23.51:35357/v3
+user_domain_name=Default
+timeout=30
+project_domain_name=Default
+url=http://172.23.16.10:9696
+ovs_bridge=br-int
+region_name=RegionOne
+auth_type=v3password
+username=neutron
+[DEFAULT]
+force_raw_images=True
+use_neutron=True
+log_dir=/var/log/nova
+notify_api_faults=False
+state_path=/var/lib/nova
+report_interval=10
+image_service=nova.image.glance.GlanceImageService
+heal_instance_info_cache_interval=60
+notify_on_state_change=vm_and_task_state
+firewall_driver=nova.virt.firewall.NoopFirewallDriver
+instance_usage_audit=True
+use_ipv6=False
+reserved_host_memory_mb=2048
+vif_plugging_is_fatal=True
+service_down_time=60
+host={{ grains['fqdn'] }}
+instance_usage_audit_period=hour
+auth_strategy=keystone
+compute_driver=libvirt.LibvirtDriver
+rootwrap_config=/etc/nova/rootwrap.conf
+rpc_backend=rabbit
+vif_plugging_timeout=300
+dhcp_domain={{ grains['domain'] }}
+allow_resize_to_same_host=False
+[api_database]
+connection=mysql+pymysql://nova_api:{{ pillar['NovaPassword'] }}@172.23.16.10/nova_api
+[oslo_messaging_rabbit]
+rabbit_userid=guest
+rabbit_password={{ pillar['RabbitPassword'] }}
+rabbit_ha_queues=True
+heartbeat_timeout_threshold=60
+rabbit_use_ssl=False
+rabbit_hosts=172.23.16.210:5672,172.23.16.211:5672,172.23.16.212:5672
+[libvirt]
+inject_partition=-2
+inject_password=False
+disk_cachemodes=network=writeback
+cpu_mode=host-model
+virt_type=kvm
+inject_key=False
+images_rbd_pool=vms
+rbd_secret_uuid={{ pillar['rbd_secret'] }}
+images_type=rbd
+images_rbd_ceph_conf=/etc/ceph/ceph.conf
+hw_disk_discard=unmap
+rbd_user=openstack
+[oslo_messaging_notifications]
+driver=messagingv2
+[glance]
+api_servers=http://172.31.17.10:9292
+[cinder]
+catalog_info=volumev2:cinderv2:internalURL
+[vnc]
+vncserver_proxyclient_address={{ salt['pillar.get']('networks:Internal_api:ip','') }}
+vncserver_listen=0.0.0.0
+keymap=en-us
+enabled=True
+novncproxy_base_url=https://horizon.ecs.vapor.gatech.edu:13080/vnc_auto.html
+[cache]
+backend=oslo_cache.memcache_pool
+enabled=True
+memcache_servers=172.23.16.210:11211,172.23.16.211:11211,172.23.16.212:11211
+[oslo_concurrency]
+lock_path=/var/lib/nova/tmp
+[database]
+max_retries=-1
+connection=mysql+pymysql://nova:{{ pillar['NovaPassword'] }}@172.23.16.10/nova
+db_max_retries=-1
+
+
+[keystone_authentication]
+auth_version = v3
+
+
+[keystone_authtoken]
+auth_version = v3

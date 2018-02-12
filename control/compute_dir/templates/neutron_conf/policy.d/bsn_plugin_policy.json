@@ -1,0 +1,16 @@
+{
+    "get_networktemplate": "",
+    "create_networktemplate": "rule:admin",
+    "update_networktemplate": "rule:admin",
+    "delete_networktemplate": "rule:admin",
+
+    "get_networktemplateassignment": "",
+    "create_networktemplateassignment": "",
+    "update_networktemplateassignment": "",
+    "delete_networktemplateassignment": "",
+
+    "get_reachabilitytest": "rule:admin_or_owner",
+    "create_reachabilitytest": "rule:admin_or_owner",
+    "update_reachabilitytest": "rule:admin_or_owner",
+    "delete_reachabilitytest": "rule:admin_or_owner"
+}

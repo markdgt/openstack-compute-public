@@ -1,0 +1,16 @@
+DEVICE=vlan{{ tag }}
+ONBOOT=yes
+HOTPLUG=no
+NM_CONTROLLED=no
+PEERDNS=no
+DEVICETYPE=ovs
+TYPE=OVSIntPort
+OVS_BRIDGE=br-ex
+{% if tag=='None' %}
+OVS_OPTIONS=""
+{% else %}
+OVS_OPTIONS="tag={{ tag }}"
+{% endif %}
+BOOTPROTO=static
+IPADDR={{ ip }}
+NETMASK=255.255.255.0
