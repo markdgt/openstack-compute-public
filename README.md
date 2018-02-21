@@ -7,4 +7,4 @@ This assumes you already have a Control Plane with the following components:
 
 For deeper details on how this is used with TripleO go here:
 
-Ask me (mdanielson@gatech.edu) for access the sharepoint link ;(
+Ask me for access the sharepoint link ;(
