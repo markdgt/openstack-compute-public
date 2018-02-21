@@ -1,3 +1,4 @@
+#Making sure qemu/kvm/libvirt is installed and configured.
 libvirt:
   pkg.installed: []
   file.managed:
@@ -8,6 +9,8 @@ libvirt:
   service.running:
     - name: libvirtd
     - file: libvirt
+
+#These states are used to define kvm authorization to ceph disk stores.
 libvirt_secret_define:
   cmd.run:
     - name: virsh secret-define --file /etc/nova/secret.xml

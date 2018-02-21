@@ -1,3 +1,4 @@
+#Simple jinja/template key/value swaps with openstack/pass pillars.
 /etc/neutron/neutron.conf:
   file.managed:
     - source: salt://openstack/compute_dir/templates/neutron_conf/neutron.conf.jinja

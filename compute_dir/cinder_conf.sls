@@ -1,3 +1,4 @@
+#Simple jinja/template key/value swaps with openstack/pass pillars.
 /etc/cinder/cinder.conf:
   file.managed:
     - source: salt://openstack/compute_dir/templates/cinder_conf/cinder_conf.jinja

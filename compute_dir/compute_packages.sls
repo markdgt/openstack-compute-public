@@ -1,3 +1,5 @@
+
+#These assumes you have the necessary repos enabled from satellite.gatech.edu.  See OneNote
 compute.packages:
   pkg.installed:
     - pkgs:

@@ -1,3 +1,6 @@
+#This is one of these state files that could use modules instance of jinja/templates.
+#However, since neutron controls the iptables on the node it expects iptables to be a certain state so this makes more since for my setup.
+
 iptables:
   file.managed:
     - name: /etc/sysconfig/iptables

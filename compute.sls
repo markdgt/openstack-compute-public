@@ -9,8 +9,9 @@ include:
   - openstack/compute_dir/ceph_conf
   - openstack/compute_dir/ceilometer_conf
   - openstack/compute_dir/cinder_conf
-
 #services
+#These service checks are done in the state files above.  Below are just sanity checks after all the states are run to make sure the services 
+#stayed up.
 neutron-openvswitch-agent:
   service.running:
     - enable: True

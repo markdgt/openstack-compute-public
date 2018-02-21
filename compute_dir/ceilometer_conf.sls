@@ -1,3 +1,5 @@
+
+##Simple jinja/template key/value swaps with openstack/pass pillars.
 /etc/ceilometer/ceilometer.conf:
   file.managed:
     - source: salt://openstack/compute_dir/templates/ceilo_conf/ceilometer_conf.jinja

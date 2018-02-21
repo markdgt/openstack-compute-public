@@ -1,3 +1,4 @@
+##Simple jinja/template key/value swaps with openstack/pass pillars.
 /etc/ceph/ceph.conf:
   file.managed:
     - source: salt://openstack/compute_dir/templates/ceph_conf/ceph.conf.jinja
