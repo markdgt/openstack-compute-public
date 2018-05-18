@@ -39,13 +39,13 @@ And setups up the openstack networking interfaces:
 		
 Make sure OVS is setup:
 
-	/srv/salt/openstack/compute_dir/ovs
+	compute_dir/ovs
 	Installs packages, starts the service.  
 	I also make sure the br-int,br-tun and br-ex bridges are present. 
 	
 Configure default iptables:
 
-	/srv/salt/openstack/compute_dir/iptables.sls
+	compute_dir/iptables.sls
 	A stop gap to make sure a firewall is in place until neutron takes over.
 Configuring Compute Services:
 
@@ -55,28 +55,28 @@ More or less just key/value templates, using the openstack/pass.sls state file. 
 
 State File for configuring nova  configs:
 
-	/srv/salt/openstack/compute_dir/nova_conf
+	compute_dir/nova_conf
 	We configure the KVM -> Ceph secret config in this file.  
 	Consolidate with the ceph conf below?
 
 State file for configuring libvirt:
 
-	/srv/salt/openstack/compute_dir/libvirt_conf
+	compute_dir/libvirt_conf
            Installing and configuring libvirtd 
 	Making sure the service is running
 	Defining the ceph secret variable using (virsh secret-define)
 State file for configuring neutron configs:
 
-	/srv/salt/openstack/compute_dir/neutron_conf
+	compute_dir/neutron_conf
 
 State file for configuring ceph configs:
 
-	/srv/salt/openstack/compute_dir/ceph_conf
+	compute_dir/ceph_conf
 
 State file for configuring ceilometer configs:
 
-	/srv/salt/openstack/compute_dir/ceilometer_conf
+	compute_dir/ceilometer_conf
 
 State file for configuring cinder configs:
 
-	/srv/salt/openstack/compute_dir/cinder_conf
+	compute_dir/cinder_conf
