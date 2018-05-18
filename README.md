@@ -15,3 +15,68 @@ I use mostly jinja templates vs state modules even  though modules like firewall
 
 # Pillars
 I have my pillars outside my state files for security purposes so I've created a sample pillar directory for examples only.  These will need to be moved to your pillar directory
+
+#Workflow/Outline
+
+State Files:
+
+When the 'compute' role is set in the pillar file, we execute the compute statefile 
+
+	/srv/salt/openstack/compute.sls
+
+The compute.sls installs the compute rpm packages:
+
+	 /srv/salt/openstack/compute_dir/compute_packages.sls
+
+	Basic Package requirements for openstack-nova and neutron to function.
+
+And setups up the openstack networking interfaces:
+
+	/srv/salt/openstack/compute_dir/networks
+		Takes the networks dict() 'sample to the right' -------->
+		And creates an interface for each 'key'
+		ToDO: create watches for each interface to 'HUP' the interface if changed.
+		
+Make sure OVS is setup:
+
+	/srv/salt/openstack/compute_dir/ovs
+	Installs packages, starts the service.  
+	I also make sure the br-int,br-tun and br-ex bridges are present. 
+	
+Configure default iptables:
+
+	/srv/salt/openstack/compute_dir/iptables.sls
+	A stop gap to make sure a firewall is in place until neutron takes over.
+Configuring Compute Services:
+
+
+###Configurations#####
+More or less just key/value templates, using the openstack/pass.sls state file. Actions noted below otherwise:
+
+State File for configuring nova  configs:
+
+	/srv/salt/openstack/compute_dir/nova_conf
+	We configure the KVM -> Ceph secret config in this file.  
+	Consolidate with the ceph conf below?
+
+State file for configuring libvirt:
+
+	/srv/salt/openstack/compute_dir/libvirt_conf
+           Installing and configuring libvirtd 
+	Making sure the service is running
+	Defining the ceph secret variable using (virsh secret-define)
+State file for configuring neutron configs:
+
+	/srv/salt/openstack/compute_dir/neutron_conf
+
+State file for configuring ceph configs:
+
+	/srv/salt/openstack/compute_dir/ceph_conf
+
+State file for configuring ceilometer configs:
+
+	/srv/salt/openstack/compute_dir/ceilometer_conf
+
+State file for configuring cinder configs:
+
+	/srv/salt/openstack/compute_dir/cinder_conf
