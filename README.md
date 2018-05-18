@@ -7,7 +7,7 @@ This assumes you already have a Control Plane with the following components:
 
 For deeper details on how this is used with TripleO go here:
 
-Ask me for access the sharepoint link ;(
+[User Group Discussion](Cloud-Update.pdf)
 
 # State Modules VS Jinja
 
