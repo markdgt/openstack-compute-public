@@ -16,7 +16,7 @@ I use mostly jinja templates vs state modules even  though modules like firewall
 # Pillars
 I have my pillars outside my state files for security purposes so I've created a sample pillar directory for examples only.  These will need to be moved to your pillar directory
 
-#Workflow/Outline
+# Workflow/Outline
 
 State Files:
 
@@ -50,7 +50,7 @@ Configure default iptables:
 Configuring Compute Services:
 
 
-###Configurations#####
+## Configurations
 More or less just key/value templates, using the openstack/pass.sls state file. Actions noted below otherwise:
 
 State File for configuring nova  configs:
