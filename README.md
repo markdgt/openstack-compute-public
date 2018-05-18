@@ -22,17 +22,17 @@ State Files:
 
 When the 'compute' role is set in the pillar file, we execute the compute statefile 
 
-	/srv/salt/openstack/compute.sls
+	compute.sls
 
 The compute.sls installs the compute rpm packages:
 
-	 /srv/salt/openstack/compute_dir/compute_packages.sls
+	 compute_dir/compute_packages.sls
 
 	Basic Package requirements for openstack-nova and neutron to function.
 
 And setups up the openstack networking interfaces:
 
-	/srv/salt/openstack/compute_dir/networks
+	compute_dir/networks
 		Takes the networks dict() 'sample to the right' -------->
 		And creates an interface for each 'key'
 		ToDO: create watches for each interface to 'HUP' the interface if changed.
