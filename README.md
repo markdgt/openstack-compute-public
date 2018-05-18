@@ -33,7 +33,7 @@ The compute.sls installs the compute rpm packages:
 And setups up the openstack networking interfaces:
 
 	compute_dir/networks
-		Takes the networks dict() 'sample to the right' -------->
+		Takes the networks dict() [network interfaces](pillars/sample.sls)
 		And creates an interface for each 'key'
 		ToDO: create watches for each interface to 'HUP' the interface if changed.
 		
